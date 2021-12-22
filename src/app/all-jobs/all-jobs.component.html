@@ -1,0 +1,18 @@
+<article *ngFor="let work of allJobsInformation; let i=index">
+    <p>{{work.key}}</p>
+    <mat-card *ngFor="let job of work.jobs" class="example-card">
+        <mat-card-title-group>
+            <mat-card-title>{{job.companyName}}</mat-card-title>
+            <img mat-card-sm-image [src]="job.companyLogo">
+        </mat-card-title-group>
+        <mat-card-content>
+            {{job.companyWorkDescription}}
+        </mat-card-content>
+        <mat-card-content *ngFor="let item of job.workExps">
+            {{item.position}} |
+            {{item.startAt}} |
+            {{item.endAt}}
+        </mat-card-content>
+    </mat-card>
+</article>
+

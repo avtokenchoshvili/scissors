@@ -1,0 +1,133 @@
+<section>
+    <div>
+      <form
+        [formGroup]="jobForm"
+        (ngSubmit)="onFormSubmit()"
+        class="example-form"
+      >
+        <button type="button" (click)="addNewJob()" mat-button color="warn">
+          ADD JOB
+        </button>
+  
+        <article formArrayName="jobs">
+          <div *ngFor="let job of getJobs().controls; let jobIndex = index">
+            <div [formGroupName]="jobIndex" class="job">
+              <div class="form-group">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Company Name</mat-label>
+                  <input class="form-control" formControlName="companyName" matInput placeholder="Ex. Pizza" value="" />
+                </mat-form-field>
+              </div>
+            
+<div class="form-group">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Company Logo</mat-label>
+    <input formControlName="companyLogo" matInput placeholder="Ex. Pizza" value="" />
+  </mat-form-field>
+
+</div>
+
+         g
+
+              <div class="form-group">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Enter company work description</mat-label>
+                  <input formControlName="companyWorkDescription" matInput placeholder="Ex. Pizza" value="" />
+                </mat-form-field>
+              </div>
+           
+  
+              <button
+                type="button"
+                (click)="addNewExpAtJob(jobIndex)"
+                mat-button
+                color="accent"
+              >
+                Add new Experience
+              </button>
+  
+              <div formArrayName="workExps">
+                <div
+                  *ngFor="
+                    let exp of getWorkExps(jobIndex).controls;
+                    let expIndex = index
+                  "
+                >
+                  <div [formGroupName]="expIndex" class="exp">
+                    <button
+                      type="button"
+                      (click)="deleteJobExp(jobIndex, expIndex)"
+                      mat-button
+                      color="accent"
+                    >
+                      Delete 
+                    </button>
+  <div class="form-group">
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Enter position</mat-label>
+      <input formControlName="position" matInput placeholder="Ex. Pizza" value="" />
+    </mat-form-field>
+
+  </div>
+               
+
+
+                   <div class="form-group">
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Start at</mat-label>
+                      <input
+                      formControlName="startAt"
+                        type="date"
+                        matInput
+                        placeholder="Ex. Pizza"
+                        value=""
+                      />
+                    </mat-form-field>
+                   </div>
+                
+  
+
+
+                    <div class="form-group">
+
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>End at</mat-label>
+                        <input
+                        formControlName="endAt"
+                          type="date"
+                          matInput
+                          placeholder="Ex. Pizza"
+                          value=""
+                        />
+                      </mat-form-field>
+                    </div>
+               
+
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Favorite food</mat-label>
+                        <input
+                          matInput
+                          required
+                          formControlName=""
+                          matInput
+                          placeholder="Ex. Pizza"
+                          value="Sushi"
+                        />
+                      </mat-form-field>
+                    </div>
+  
+           
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <button type="submit" mat-button color="warn">SAve</button>
+      </form>
+    </div>
+  </section>
+  
